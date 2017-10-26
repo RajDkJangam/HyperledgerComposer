@@ -54,9 +54,13 @@ composer network deploy -p hlfv1 -a membervaluetrading.bna -i PeerAdmin -s peera
 9.UI design 
 Generate Rest Server and Angular Application.
 yo hyperledger-composer
+
+10. Now go to the folder (name of the application which you have generated in the previous step_ see the image above>
+cd  folder_name)
+now run the command: npm start
  
 
-10. Check the Server
+11. Check the Server
 Open localhost:4200 - Angular Application
 Open localhost:3000 – Rest Explorer.
 
