@@ -33,7 +33,6 @@ cd ~/fabric-tools
 ./startFabric.sh
 ./createComposerProfile.sh
 
-
 7. Setup Helping Files
 Go to the same directory ~/fabric-tools
 Run the commands
