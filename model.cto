@@ -1,0 +1,43 @@
+/**
+ * Sample business network definition.
+ */
+namespace org.roaming.network
+
+asset CDR identified by CompositeKey {
+  o String CompositeKey
+  o String Number
+  o String TimeStamp
+  o String CallDuration
+  o String CallCost
+  o String DataDuration
+  o String DataCost
+  o String Status
+}
+
+participant HPMN identified by HPMNId {
+  o String HPMNId
+  o String Name
+}
+
+participant VPMN identified by VPMNId {
+  o String VPMNId
+  o String Name
+}
+
+participant Subscriber identified by SubscriberId {
+  o String SubscriberId
+  o String Name
+}
+
+transaction EntitlementFromVPMN {
+  o String Number
+  o String TimeStamp
+  o String CallDuration
+  o String DataDuration
+}
+
+transaction EntitlementFromHPMN {
+  o String Number
+  o String TimeStamp
+}
+
