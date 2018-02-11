@@ -1,0 +1,113 @@
+
+
+Install Curl:
+
+sudo apt-get install curl
+
+
+Prereq in one script:
+
+curl -O https://hyperledger.github.io/composer/prereqs-ubuntu.sh
+
+chmod u+x prereqs-ubuntu.sh
+
+
+./prereqs-ubuntu.sh
+
+
+it will install:
+
+    Docker Engine: Version 17.03 or higher
+    Docker-Compose: Version 1.8 or higher
+    Node: 8.9 or higher (note version 9 is not supported)
+    npm: v5.x
+    git: 2.9.x or higher
+    Python: 2.7.x
+    A code editor of your choice, we recommend VSCode.
+
+
+logout and login again
+
+Install:
+
+npm install -g composer-cli
+
+npm install -g composer-rest-server
+
+
+npm install -g generator-hyperledger-composer
+
+npm install -g yo
+
+
+mkdir ~/fabric-tools && cd ~/fabric-tools
+
+curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.zip
+unzip fabric-dev-servers.zip
+
+Use the scripts you just downloaded and extracted to download a local Hyperledger Fabric runtime:
+
+sudo -s
+Give password
+
+cd ~/fabric-tools
+./downloadFabric.sh
+
+
+    cd ~/fabric-tools
+    ./startFabric.sh
+    ./createPeerAdminCard.sh
+
+
+
+copy the model, lib and package.json files under fabric-tools/roaming-network folder
+
+
+
+go to roaming-network folder via console 
+
+composer archive create -t dir -n .  <look at last dot> 
+
+
+composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName roaming-network
+
+check 
+composer card list
+if admin card exists then delete using the following command
+composer card delete -n admin@roaming-network
+
+(if card already exists then it will remove)
+
+composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile roaming-network@0.0.1.bna --file networkadmin.card
+
+
+composer card import --file networkadmin.card
+
+
+composer network ping --card admin@roaming-network
+
+
+composer-rest-server
+never use namespaces
+admin@roaming-network
+
+To restart the REST server using the same options, issue the following command:
+   composer-rest-server -c admin@roaming-network -n always
+
+
+To stop the containers before closing the machine.
+docker stop $(docker ps -a -q)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
